@@ -8,7 +8,7 @@ namespace Task_1.Models
 {
     public class Context: DbContext
     {
-        public DbSet<Student> Students { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Award> Awards { get; set; }
     }
 }

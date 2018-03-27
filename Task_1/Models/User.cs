@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Task_1.Models.Interfaces;
 
 namespace Task_1.Models
 {
-    public class Student
+    public class User: IImage
     {
         public int Id { get; set; }
+        
         public string Name { get; set; }
+        
         public DateTime Birthdate { get; set; }
         private int age;
 
@@ -17,6 +21,11 @@ namespace Task_1.Models
             get { return age; }
             private set { age = DateTime.Now.Year - Birthdate.Year; }
         }
+
+        public byte[] Image { get; set; }
+
+        public string ImageType { get; set; }
+
 
     }
 }
