@@ -7,10 +7,12 @@
 }
 
 <h2>Users</h2>
+<p>
 @Html.ActionLink("Add  a new user", "Create", "User", new { @class = "btn btn-default" })
 
 @Html.ActionLink("Download user list", "Download", "User", new { @class = "btn btn-default" })
-<br />
+    </p>
+
 
 @foreach (var item in ViewBag.Users)
 {

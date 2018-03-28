@@ -7,12 +7,17 @@ using Task_1.Models;
 
 namespace Task_1.Controllers
 {
+   /// <summary>
+   /// Award controller
+   /// </summary>
     public class AwardController : Controller
     {
 
         Context db = new Context();
 
-        // GET: Award
+        /// <summary>
+        /// Shows the list of award
+        /// </summary>      
         public ActionResult Index()
         {
             var awards = db.Awards;
@@ -20,19 +25,25 @@ namespace Task_1.Controllers
         }
 
 
-        // GET: Award/Create
+        /// <summary>
+        /// GET: Create an award
+        /// </summary>       
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Award/Create
+        /// <summary>
+        /// POST: Create an award
+        /// </summary>
+        /// <param name="award">New award</param>
+        /// <param name="uploadImage">Image</param>     
         [HttpPost]
         public ActionResult Create(Award award, HttpPostedFileBase uploadImage)
         {
             try
             {
-
+                //if the user selected an image
                 if (uploadImage != null)
                 {
 
@@ -43,6 +54,7 @@ namespace Task_1.Controllers
                 }
                 else
                 {
+                    //Sets the defult image
                     DefultImage.GetDefultImage(award);
                 
                 }
@@ -58,10 +70,15 @@ namespace Task_1.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Gets the image
+        /// </summary>
+        /// <param name="id">Award id</param>
+        /// <returns></returns>
         public FileContentResult GetImage(int id)
         {
             Award award  = db.Awards.Find(id);
+            //if no image sets default image
             if (award.Image ==null)
             {
                 DefultImage.GetDefultImage(award);
@@ -71,8 +88,12 @@ namespace Task_1.Controllers
 
             return File(award.Image, award.ImageType);
         }
-
-        // GET: Award/Edit/5
+        
+        /// <summary>
+        /// GET: Edits the award
+        /// </summary>
+        /// <param name="id">Award id</param>
+        /// <returns></returns>
         public ActionResult Edit(int id)
         {
             Award award = db.Awards.Find(id);
@@ -86,7 +107,13 @@ namespace Task_1.Controllers
 
         }
 
-        // POST: Award/Edit/5
+     
+        /// <summary>
+        /// POST: Edits the award
+        /// </summary>
+        /// <param name="award">Award</param>
+        /// <param name="uploadImage">Image</param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Edit(Award award, HttpPostedFileBase uploadImage)
         {
@@ -98,10 +125,12 @@ namespace Task_1.Controllers
                     award.ImageType = uploadImage.ContentType;
                     award.Image = new byte[uploadImage.ContentLength];
                     uploadImage.InputStream.Read(award.Image, 0, uploadImage.ContentLength);
-                    db.Entry(award).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
+       
                 }
-              
+
+                db.Entry(award).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
 
                 return RedirectToAction("Index", "Award");
             }
@@ -111,10 +140,14 @@ namespace Task_1.Controllers
             }
         }
 
-        // GET: Award/Delete/5
+        /// <summary>
+        /// Deletes the award
+        /// </summary>
+        /// <param name="id">Award id</param>    
         public ActionResult Delete(int id)
         {
             Award award = db.Awards.Find(id);
+            
             if (award != null)
             {
                 db.Awards.Remove(award);

@@ -5,41 +5,60 @@
 @model IEnumerable<Task_1.Models.Award>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Award";
 }
 
-<h2>Index</h2>
+<h2>Awards</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "Award" ,new { @class = "btn btn-default" })
 </p>
-<table class="table">
-    <tr>
-        <th> </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
-    
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td><img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetImage", "Award", new { item.Id })" /></td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
 
-</table>
+
+@foreach (var item in Model)
+{
+    <div class="well" >
+    <table>
+        <tr>
+            <td rowspan="2"><img class="img-thumbnail" width="250" height="250" src="@Url.Action("GetImage", "Award", new { item.Id })" /></td>
+            <td width="500" align="center"  ><h1>@Html.DisplayFor(modelItem => item.Title)</h1></td>
+            <td width="200" align="center" >@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" })</td>
+        </tr>
+        <tr>
+            <td width="300" align="center"><h3>@Html.DisplayFor(modelItem => item.Description)</h3></td>
+            <td width="200" align="center">@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default" })</td>
+        </tr>
+    </table>
+        </div>
+}
+
+    @*<table class="table">
+            <tr>
+                <th> </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetImage", "Award", new { item.Id })" /></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>*@

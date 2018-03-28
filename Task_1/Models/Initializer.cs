@@ -6,8 +6,15 @@ using System.Data.Entity;
 
 namespace Task_1.Models
 {
+    /// <summary>
+    /// Allows to set a database default values
+    /// </summary>
     public class Initializer : DropCreateDatabaseAlways<Context>
     {
+        /// <summary>
+        /// Sets a database default values
+        /// </summary>
+        /// <param name="context">Database context</param>
         protected override void Seed(Context context)
         {
             context.Users.Add(new User { Name = "Valeriy", Birthdate = DateTime.Parse("18.05.1996") });
