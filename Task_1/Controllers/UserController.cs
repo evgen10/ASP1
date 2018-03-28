@@ -130,6 +130,12 @@ namespace Task_1.Controllers
 
       
 
+        public ActionResult Download()
+        {
+            string fileName;
+            return File(UserList.DownloadUserList(out fileName),"text/txt",fileName);
+        }
+
         public FileContentResult GetImage(int id)
         {
             User user = db.Users.Find(id);

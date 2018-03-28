@@ -19,7 +19,16 @@ namespace Task_1.Models
         public int Age
         {
             get { return age; }
-            private set { age = DateTime.Now.Year - Birthdate.Year; }
+            private set {
+
+                age =  DateTime.Now.Year - Birthdate.Year;
+                if (DateTime.Now.Month < Birthdate.Month || (DateTime.Now.Month == Birthdate.Month && DateTime.Now.Day < Birthdate.Day))
+                {
+                    age--;
+                }
+                
+
+            }
         }
 
         public byte[] Image { get; set; }

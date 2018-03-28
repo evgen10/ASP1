@@ -124,6 +124,7 @@
     <Compile Include="Models\Initializer.cs" />
     <Compile Include="Models\Interfaces\IImage.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -133,7 +134,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
@@ -141,6 +141,8 @@
     <Content Include="Views\Award\Create.cshtml" />
     <Content Include="Views\Award\Index.cshtml" />
     <Content Include="Views\Award\Edit.cshtml" />
+    <Content Include="Views\Shared\_LayoutPageForUsers.cshtml" />
+    <Content Include="Views\Shared\_LayoutPageForAwards.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -150,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

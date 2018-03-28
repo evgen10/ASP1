@@ -1,58 +1,84 @@
-﻿
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPageForUsers.cshtml";
+}
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Users</h2>
-@Html.ActionLink("Add  a new user", "Create", "User")
-<table>
-    <tr>
-        <th></th>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Birthdate</th>
-        <th>Age</th>
-        <th></th>
-    </tr>
-    @foreach (var item in ViewBag.Users)
-    {
-        <tr>
-            <td>
-                @*@if (Model.Image == null)
-                {*@
-                    @*<p> <img width="100" height="100" src="~/Images/undefined.png" /></p>
-                        }
-                        else
-                        {*@
-                    <p> <img class="img-thumbnail"  width="100" height="100" src="@Url.Action("GetImage", "User", new { item.Id })" /></p>
+@Html.ActionLink("Add  a new user", "Create", "User", new { @class = "btn btn-default" })
 
-                    <p>@item.Id</p>
-                </td>
-                <td>
-                    <p>@item.Name</p>
-                </td>
-                <td>
-                    <p>@item.Birthdate.ToShortDateString()</p>
-                </td>
-                <td>
-                    <p>@item.Age</p>
-                </td>
-                <td>
-                    <p> @Html.ActionLink("Delete", "Delete", "User", new { id = item.Id }, null)</p>
-                </td>
-                <td>
-                    <p> @Html.ActionLink("Edit", "Edit", "User", new { id = item.Id }, null)</p>
-                </td>
+@Html.ActionLink("Download user list", "Download", "User", new { @class = "btn btn-default" })
+<br />
+
+@foreach (var item in ViewBag.Users)
+{
+<div class="well">
+    
+    <table>
+        
+            <tr>
+                <td rowspan="2"><img class="img-thumbnail" width="250" height="250" src="@Url.Action("GetImage", "User", new { item.Id })"/></td>
+                <td width="500" align="center"  colspan="2"><h1>@item.Name</h1></td>
+                <td width="200" align="center"> @Html.ActionLink("Edit", "Edit", "User", new { id = item.Id }, new { @class = "btn btn-default" })</td>
             </tr>
-
-                }            
-
-
-
-
-
-               
+            <tr>
+                <td width="300" align="center" ><h1>@item.Birthdate.ToShortDateString()</h1></td>
+                <td width="300" align="center" ><h1>@item.Age y.o </h1></td>
+                <td width="200" align="center"> @Html.ActionLink("Delete", "Delete", "User", new { id = item.Id }, new { @class = "btn btn-default" })</td>
+            </tr>
+      
 
 
-            </table>
+    </table>
+
+ 
+
+
+    @*<div class="right">
+        <img class="img-thumbnail" width="250" height="250" src="@Url.Action("GetImage", "User", new { item.Id })" />
+    </div>
+
+    <div class="text-center">
+       @item.Birthdate.ToShortDateString()
+    </div>*@
+
+
+
+</div>
+
+    @*<tr>
+            <td>
+
+                <p> <img class="img-thumbnail" width="100" height="100" src="@Url.Action("GetImage", "User", new { item.Id })" /></p>
+
+                <p>@item.Id</p>
+            </td>
+            <td>
+                <p>@item.Name</p>
+            </td>
+            <td>
+                <p>@item.Birthdate.ToShortDateString()</p>
+            </td>
+            <td>
+                <p>@item.Age</p>
+            </td>
+            <td>
+                <p> @Html.ActionLink("Delete", "Delete", "User", new { id = item.Id }, null)</p>
+            </td>
+            <td>
+                <p> @Html.ActionLink("Edit", "Edit", "User", new { id = item.Id }, null)</p>
+            </td>
+        </tr>*@
+
+}
+
+
+
+
+
+
+
+
+@*</table>*@

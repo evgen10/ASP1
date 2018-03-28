@@ -14,6 +14,7 @@ namespace Task_1
         protected void Application_Start()
         {
             Database.SetInitializer(new Initializer());
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
